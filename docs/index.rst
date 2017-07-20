@@ -1,4 +1,4 @@
-.. image:: https://cdn.rawgit.com/jeremyarr/younit/dee95f56/docs/_static/logo_full.svg
+.. image:: https://cdn.rawgit.com/jeremyarr/younit/2275cf7a/docs/_static/logo_full.png
     :target: https://github.com/jeremyarr/younit
 
 |
