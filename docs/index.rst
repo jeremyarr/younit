@@ -1,9 +1,7 @@
-
 .. image:: https://cdn.rawgit.com/jeremyarr/younit/dee95f56/docs/_static/logo_full.svg
+    :target: https://github.com/jeremyarr/younit
 
-
-Welcome to younit
-=================================
+|
 
 .. image:: http://tactile.com.au/jenkins/buildStatus/icon?job=younit1
     :target: https://github.com/jeremyarr/younit
@@ -57,6 +55,7 @@ User Guide
    license
    authors
    kudos
+   contributing
 
 Indices and tables
 ==================
