@@ -19,7 +19,7 @@
     :target: https://pypi.python.org/pypi/younit
 
 
-`younit <https://github.com/jeremyarr/younit>`_ is python unit testing helpers.
+`younit <https://github.com/jeremyarr/younit>`_ is a collection of python unit testing helpers.
 
 Features
 ---------
