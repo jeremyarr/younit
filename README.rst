@@ -1,4 +1,4 @@
-.. image:: https://cdn.rawgit.com/jeremyarr/younit/dee95f56/docs/_static/logo_full.svg
+.. image:: https://cdn.rawgit.com/jeremyarr/younit/2275cf7a/docs/_static/logo_full.png
 
 .. image:: https://tactile.com.au/jenkins/buildStatus/icon?job=younit1
     :target: https://github.com/jeremyarr/younit
