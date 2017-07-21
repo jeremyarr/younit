@@ -13,5 +13,5 @@ def one_plus_one():
     return 2
 
 __all__ = ["TestHang","test_name","set_test_hang_alarm",
-            "clear_test_hang_alarm","close_all_threads",
+            "clear_test_hang_alarm","test_hang_alarm","close_all_threads",
             "asyncio_test","AsyncMock"]
