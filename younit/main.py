@@ -7,8 +7,10 @@ import unittest
 import asyncio
 from unittest.mock import MagicMock
 
+
 class TestHang(Exception):
     pass
+
 
 def test_name(func):
     '''
@@ -30,14 +32,15 @@ def test_name(func):
                 print("im testing that")
 
     '''
-    def inner(*args, **kwargs): 
-        print ("\n******** STARTING TEST: %s *********" % func.__name__)
-        return func(*args, **kwargs) 
+    def inner(*args, **kwargs):
+        print("\n******** STARTING TEST: {} *********".format(func.__name__))
+        return func(*args, **kwargs)
     return inner
 
 
 def _test_hang_handler(signum, frame):
     raise TestHang
+
 
 def test_hang_alarm(func):
     '''
@@ -58,15 +61,13 @@ def test_hang_alarm(func):
                 time.sleep(3)
 
     '''
-
-    def inner(*args,**kwargs):
+    def inner(*args, **kwargs):
         signal.signal(signal.SIGALRM, _test_hang_handler)
         signal.alarm(1)
         try:
-            return func(*args,**kwargs)
+            return func(*args, **kwargs)
         finally:
             signal.alarm(0)
-
 
     return inner
 
@@ -92,14 +93,14 @@ def set_test_hang_alarm(func):
             @clear_test_hang_alarm
             def tearDown(self):
                 pass
-
     '''
 
-    def inner(*args,**kwargs):
+    def inner(*args, **kwargs):
         signal.signal(signal.SIGALRM, _test_hang_handler)
         signal.alarm(1)
-        return func(*args,**kwargs)
+        return func(*args, **kwargs)
     return inner
+
 
 def clear_test_hang_alarm(func):
     '''
@@ -118,14 +119,14 @@ def clear_test_hang_alarm(func):
             @clear_test_hang_alarm
             def tearDown(self):
                 pass
-
     '''
-    def inner(*args,**kwargs):
+    def inner(*args, **kwargs):
         try:
-            return func(*args,**kwargs)
+            return func(*args, **kwargs)
         finally:
             signal.alarm(0)
     return inner
+
 
 def close_all_threads(func):
     '''
@@ -161,6 +162,7 @@ def close_all_threads(func):
 
     return inner
 
+
 def asyncio_test(func):
     '''
     A decorator that runs a test as a coroutine including
@@ -181,11 +183,11 @@ def asyncio_test(func):
 
     '''
     def inner(self):
-        async def run(self,*args,**kwargs):
+        async def run(self, *args, **kwargs):
             await self.async_setUp()
 
             try:
-                return await func(self,*args,**kwargs)
+                return await func(self, *args, **kwargs)
             finally:
                 await self.async_tearDown()
 
@@ -200,12 +202,13 @@ def asyncio_test(func):
 
     return inner
 
+
 def AsyncMock(*args, **kwargs):
     '''
-    A function that can be used to mock a coroutine. 
+    A function that can be used to mock a coroutine.
 
     Returns a coroutine function with a mock attribute.
-    The mock attribute is a :class:`unittest.mock.MagicMock` object that records 
+    The mock attribute is a :class:`unittest.mock.MagicMock` object that records
     usage.
 
 
@@ -225,8 +228,8 @@ def AsyncMock(*args, **kwargs):
                 x.mock.assert_called_once()
     '''
 
-    #thanks to miguel grinberg for this
-    #https://blog.miguelgrinberg.com/post/unit-testing-asyncio-code
+    # thanks to miguel grinberg for this
+    # https://blog.miguelgrinberg.com/post/unit-testing-asyncio-code
 
     m = MagicMock(*args, **kwargs)
 
