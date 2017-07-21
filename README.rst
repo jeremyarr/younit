@@ -25,8 +25,7 @@ Helpers
 ---------
 
 ==========================================  =======================================================
-I want to                                   Helpers to Use
-==========================================  =======================================================
+**I want to**                               **Helpers to Use**
 Test coroutines                             @asyncio_test
 Mock out coroutines                         AsyncMock(), 
                                             @asyncio_test 
