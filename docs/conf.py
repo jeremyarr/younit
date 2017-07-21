@@ -26,6 +26,7 @@ about = {}
 with open(os.path.join(here,"..",'younit', '__version__.py'), 'r') as f:
     exec(f.read(), about)
 
+sys.path.insert(0, os.path.abspath('..'))
 
 # -- General configuration ------------------------------------------------
 
@@ -38,7 +39,8 @@ with open(os.path.join(here,"..",'younit', '__version__.py'), 'r') as f:
 # ones.
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.todo',
-    'sphinxcontrib.asyncio']
+    'sphinxcontrib.asyncio',
+    'sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -178,3 +180,5 @@ texinfo_documents = [
 
 
 autoclass_content = 'both'
+
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
