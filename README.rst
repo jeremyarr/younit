@@ -19,12 +19,22 @@
     :target: https://pypi.python.org/pypi/younit
 
 
-`younit <https://github.com/jeremyarr/younit>`_ is a collection of python unit testing helpers.
+`younit <https://github.com/jeremyarr/younit>`_ is a collection of helpers for the `unittest <https://docs.python.org/3/library/unittest.html#module-unittest>`_ module.
 
-Features
+Helpers
 ---------
 
-
+==========================================  =======================================================
+I want to                                   Helpers to Use
+==========================================  =======================================================
+Test coroutines                             @asyncio_test
+Mock out coroutines                         AsyncMock(), 
+                                            @asyncio_test 
+Print the name of a test before running it  @test_name
+Fail a test if it hangs                     @set_test_hang_alarm, 
+                                            @clear_test_hang_alarm
+Close all threads associated with a test    @close_all_threads
+==========================================  =======================================================
 
 Get It Now
 -----------
@@ -33,9 +43,39 @@ Get It Now
 
     $ pip install younit
 
-Usage
+Examples
 --------------
 
+Testing and mocking coroutines:
+
+.. code-block:: python
+
+    class MyTestCase(unittest.TestCase):
+        async def async_setUp(self):
+            pass
+
+        async def async_tearDown(self):
+            pass
+
+        @asyncio_test
+        async def test_this(self):
+            x = AsyncMock()
+            await x()
+            x.mock.assert_called_once()
+
+
+Setting up test hang alarms:
+
+.. code-block:: python
+
+    class MyTestCase(unittest.TestCase):
+        @set_test_hang_alarm
+        def setUp(self):
+            pass
+
+        @clear_test_hang_alarm
+        def tearDown(self):
+            pass
 
 
 
