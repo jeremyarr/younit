@@ -39,6 +39,36 @@ def test_name(func):
 def _test_hang_handler(signum, frame):
     raise TestHang
 
+def test_hang_alarm(func):
+    '''
+    A decorator that sets an alarm of 1 second before
+    starting any test.
+
+    If a test takes longer than 1 second, a :class:`TestHang`
+    exception is raised.
+
+    If a test takes less than 1 second, the alarm is cancelled.
+
+    Usage::
+
+        class MyTestCase(unittest.TestCase):
+
+            @test_hang_alarm
+            def test_this(self):
+                time.sleep(3)
+
+    '''
+
+    def inner(*args,**kwargs):
+        signal.signal(signal.SIGALRM, _test_hang_handler)
+        signal.alarm(1)
+        out = func(*args,**kwargs)
+        signal.alarm(0)
+        return out
+
+    return inner
+
+
 def set_test_hang_alarm(func):
     '''
     A decorator that sets an alarm of 1 second before
