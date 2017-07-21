@@ -1,9 +1,16 @@
-.. module:: younit
-
 .. _api:
 
 API
 =====
+
+.. automodule:: younit
+    :members:
+
+.. autoexception:: TestHang
+
+
+
+
 
 .. contents::
    :local:
