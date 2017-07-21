@@ -23,12 +23,22 @@ welcome to younit
     :target: https://pypi.python.org/pypi/younit
 
 
-`younit <https://github.com/jeremyarr/younit>`_ is a collection of python unit testing helpers.
+`younit <https://github.com/jeremyarr/younit>`_ is a collection of helpers for the :mod:`unittest` module.
 
-Features
+Helpers
 ---------
 
-
+==========================================  =======================================================
+I want to                                   Helpers to Use
+==========================================  =======================================================
+Test coroutines                             :func:`@asyncio_test <younit.asyncio_test>`
+Mock out coroutines                         :func:`~younit.AsyncMock`, 
+                                            :func:`@asyncio_test <younit.asyncio_test>`
+Print the name of a test before running it  :func:`@test_name <younit.test_name>`
+Fail a test if it hangs                     :func:`@set_test_hang_alarm <younit.set_test_hang_alarm>`, 
+                                            :func:`@clear_test_hang_alarm <younit.clear_test_hang_alarm>`
+Close all threads associated with a test    :func:`@close_all_threads <younit.close_all_threads>`
+==========================================  =======================================================
 
 Get It Now
 -----------
@@ -37,20 +47,45 @@ Get It Now
 
     $ pip install younit
 
-Usage
+Examples
 --------------
 
+Testing and mocking coroutines::
+
+    class MyTestCase(unittest.TestCase):
+        async def async_setUp(self):
+            pass
+
+        async def async_tearDown(self):
+            pass
+
+        @asyncio_test
+        async def test_this(self):
+            x = AsyncMock()
+            await x()
+            x.mock.assert_called_once()
 
 
+Setting up test hang alarms::
 
-User Guide
------------
+    class MyTestCase(unittest.TestCase):
+        @set_test_hang_alarm
+        def setUp(self):
+            pass
+
+        @clear_test_hang_alarm
+        def tearDown(self):
+            pass
+
+Check out the individual :ref:`helpers <api>` for more examples.
+
+Project Documentation
+-----------------------
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   examples
    api
    changelog
    license
