@@ -36,7 +36,8 @@ Mock out coroutines                         :func:`~younit.AsyncMock`,
                                             :func:`@asyncio_test <younit.asyncio_test>`
 Print the name of a test before running it  :func:`@test_name <younit.test_name>`
 Fail a test if it hangs                     :func:`@set_test_hang_alarm <younit.set_test_hang_alarm>`, 
-                                            :func:`@clear_test_hang_alarm <younit.clear_test_hang_alarm>`
+                                            :func:`@clear_test_hang_alarm <younit.clear_test_hang_alarm>`,
+                                            or :func:`@test_hang_alarm <younit.test_hang_alarm>`
 Close all threads associated with a test    :func:`@close_all_threads <younit.close_all_threads>`
 ==========================================  =======================================================
 

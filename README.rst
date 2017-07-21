@@ -31,8 +31,8 @@ Test coroutines                             @asyncio_test
 Mock out coroutines                         AsyncMock(), 
                                             @asyncio_test 
 Print the name of a test before running it  @test_name
-Fail a test if it hangs                     @set_test_hang_alarm, 
-                                            @clear_test_hang_alarm
+Fail a test if it hangs                     @set_test_hang_alarm, @clear_test_hang_alarm, or
+                                            @test_hang_alarm
 Close all threads associated with a test    @close_all_threads
 ==========================================  =======================================================
 
