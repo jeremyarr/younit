@@ -62,9 +62,11 @@ def test_hang_alarm(func):
     def inner(*args,**kwargs):
         signal.signal(signal.SIGALRM, _test_hang_handler)
         signal.alarm(1)
-        out = func(*args,**kwargs)
-        signal.alarm(0)
-        return out
+        try:
+            return func(*args,**kwargs)
+        finally:
+            signal.alarm(0)
+
 
     return inner
 
@@ -119,8 +121,10 @@ def clear_test_hang_alarm(func):
 
     '''
     def inner(*args,**kwargs):
-        signal.alarm(0)
-        return func(*args,**kwargs)
+        try:
+            return func(*args,**kwargs)
+        finally:
+            signal.alarm(0)
     return inner
 
 def close_all_threads(func):
