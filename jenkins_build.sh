@@ -9,7 +9,7 @@ echo "installing new virtualenv"
 virtualenv --python=python3.6 env
 
 echo "activating virtualenv"
-source env/bin/activate
+. env/bin/activate
 
 echo "installing required packages"
 pip install -r requirements_dev.txt
