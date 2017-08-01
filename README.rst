@@ -94,4 +94,4 @@ License
 -------
 
 MIT licensed. See the bundled `LICENSE <https://github.com/jeremyarr/younit/blob/master/LICENSE>`_ file for more details.
-~
+
