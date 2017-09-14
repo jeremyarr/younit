@@ -4,6 +4,7 @@ import sys
 PY_VER = sys.version_info
 
 if not PY_VER >= (3, 6):
+    print("PYTHON VERSION WHEN RUNNING YOUNIT SETUP = {}".format(PY_VER))
     raise RuntimeError("younit doesn't support Python earlier than 3.6")
 
 here = os.path.abspath(os.path.dirname(__file__))
